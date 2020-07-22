@@ -40,7 +40,6 @@ from sections sec
     left join schoolstaff ss on sec.teacher=ss.id
     
 where 
-    SEC.id=22443
-    /*sysdate between t.firstday and t.lastday
+    sysdate between t.firstday and t.lastday
     and sec.schoolid in ('1925','1923','3000','9404','1153','1157','2988','1705','798','2062','1938')
-    --and sec.id in (select distinct cc.sectionid from cc where sysdate between cc.dateenrolled-10 and cc.dateleft+10);*/
+    and sec.id in (select distinct cc.sectionid from cc where sysdate between cc.dateenrolled-10 and cc.dateleft+10)
