@@ -12,7 +12,6 @@ select
     to_char(s.dob, 'MM/DD/YYYY'),
     case s.ethnicity
         when 'C' then 'W'
-        when 'O' then 'M'
         else s.ethnicity
     end,
     case to_char(sgx.ethnichispanic)
@@ -94,7 +93,7 @@ select
     null,
     s.student_number,
     ps_customfields.getcf('students',s.id,'YCS_NetworkPwd')
-    
+
 from students s
     join s_mi_stu_gc_x sgx on s.dcid=sgx.studentsdcid
     JOIN studentcontactassoc ON s.dcid = studentcontactassoc.studentdcid
@@ -102,10 +101,9 @@ from students s
     JOIN codeset ON studentcontactdetail.relationshiptypecodesetid = codeset.codesetid
 	JOIN person ON studentcontactassoc.personid = person.id
 	LEFT OUTER JOIN pssis_person_email ON person.dcid = pssis_person_email.persondcid
-    
-    
-where 
-    s.id in (select cc.studentid from cc where sysdate between cc.dateenrolled-200 and cc.dateleft+200) 
+
+
+where
+    s.id in (select cc.studentid from cc where sysdate between cc.dateenrolled-20 and cc.dateleft+20)
     and s.schoolid IN (1925,1923,3000,9404,1153,1157,2988,1705,798,2062,1938)
-    and s.student_number = 312479
     and	studentcontactdetail.liveswithflg = 1
