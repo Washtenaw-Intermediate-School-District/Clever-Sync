@@ -9,7 +9,7 @@ PROMPT School_id,Section_id,Student_id
 select
 cc.schoolid||','||
 cc.sectionid||','||
-students.dcid
+students.dcid --students.sql is pulling DCID as the primary key
 from cc
 join students on cc.studentid = students.id
 where 
