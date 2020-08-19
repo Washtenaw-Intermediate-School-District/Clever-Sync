@@ -87,6 +87,7 @@ select
     ps_customfields.getcf('students',s.id,'YCS_Email'),
     codeset.code,
     person.lastname || ', ' || person.firstname, --Contact name required when using contacts
+    'Family',
     CASE
         WHEN to_char(s.guardianemail) IS NULL THEN pssis_person_email.emailaddress
         ELSE to_char(s.guardianemail)
