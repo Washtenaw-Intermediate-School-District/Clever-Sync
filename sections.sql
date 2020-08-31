@@ -42,4 +42,4 @@ from sections sec
 where 
     sysdate between t.firstday and t.lastday
     and sec.schoolid in ('1925','1923','3000','9404','1153','1157','2988','1705','798','2062','1938')
-    and sec.id in (select distinct cc.sectionid from cc where sysdate between cc.dateenrolled-10 and cc.dateleft+10)
+    and sec.id in (select distinct cc.sectionid from cc where sysdate between cc.dateenrolled-40 and cc.dateleft+10) --This makes the entire fill pull based on CC enrollments. Before schedules are done this needs to be ignored.
