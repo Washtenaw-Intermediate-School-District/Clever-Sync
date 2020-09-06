@@ -13,7 +13,7 @@ select
     
 from schoolstaff ss
     join users u on ss.users_dcid=u.dcid
-    join s_mi_ssf_tsdl_x stx on ss.dcid=stx.schoolstaffdcid
+    join s_mi_ssf_tsdl_x stx on ss.dcid=stx.schoolstaffdcid -- this excludes any teacher who does not have a PIC number filled out
 
 where ss.status=1
     and u.ptaccess=1
