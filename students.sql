@@ -87,6 +87,8 @@ select
     ps_customfields.getcf('students',s.id,'YCS_Email'),
     codeset.code,
     person.lastname || ', ' || person.firstname, --Contact name required when using contacts
+	PSSIS_PERSON_PHONE.PHONENUMBER,
+	PSSIS_PERSON_PHONE.PHONETYPE,
     'Family',
     CASE
         WHEN to_char(s.guardianemail) IS NULL THEN pssis_person_email.emailaddress
@@ -103,6 +105,7 @@ from students s
     JOIN codeset ON studentcontactdetail.relationshiptypecodesetid = codeset.codesetid
 	JOIN person ON studentcontactassoc.personid = person.id
 	LEFT OUTER JOIN pssis_person_email ON person.dcid = pssis_person_email.persondcid
+	LEFT OUTER JOIN PSSIS_PERSON_PHONE ON person.dcid = PSSIS_PERSON_PHONE.PERSONDCID
 
 
 where
